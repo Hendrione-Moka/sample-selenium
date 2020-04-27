@@ -18,7 +18,7 @@ public class SeleniumTest {
     //set chromeOptions. You can check here: https://peter.sh/experiments/chromium-command-line-switches/
     options.addArguments("--incognito", "--start-maximized");
     //instantiate webdriver
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver = new ChromeDriver(options);
     //maximize kalo pake mac gbisa maximize
     driver.manage().window().maximize();
     //set implicit wait
