@@ -4,10 +4,13 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 
 public class SeleniumTest {
 
@@ -17,6 +20,9 @@ public class SeleniumTest {
     ChromeOptions options = new ChromeOptions();
     //set chromeOptions. You can check here: https://peter.sh/experiments/chromium-command-line-switches/
     options.addArguments("--incognito", "--start-maximized");
+    //set desired capabilities
+    options.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
+    options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
     //instantiate webdriver
     WebDriver driver = new ChromeDriver(options);
     //maximize kalo pake mac gbisa maximize
