@@ -1,6 +1,7 @@
 package demo;
 
 import java.util.concurrent.TimeUnit;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Platform;
@@ -10,27 +11,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumTest {
+public class SeleniumTestJadi {
+
 
   @Test
-  public void searchOnWikipedia() throws InterruptedException {
+  public void searchOnWikitionary2() {
     ChromeOptions options = new ChromeOptions();
-    //set chromeOptions. You can check here:
-    // https://peter.sh/experiments/chromium-command-line-switches/
+    //set chromeOptions. You can check here: https://peter.sh/experiments/chromium-command-line-switches/
     options.addArguments("--incognito", "--start-maximized");
     //set desired capabilities
     options.setCapability(CapabilityType.PLATFORM_NAME, Platform.MAC);
     options.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
-    //initialize the webdriver
+    //instantiate webdriver
     WebDriver driver = new ChromeDriver(options);
+    //maximize kalo pake mac gbisa maximize
+    driver.manage().window().maximize();
     //set implicit wait
     driver.manage().timeouts()
         .implicitlyWait(5, TimeUnit.SECONDS);
-    driver.manage().window().maximize();
-    //open the new tab and go to wikipedia.com
+    //open website
     driver.get("https://www.wikipedia.org/");
     //finding elements
     WebElement inputSearch = driver.findElement(By.id("searchInput"));
@@ -39,13 +39,18 @@ public class SeleniumTest {
     buttonSearch.click();
 
     //check the result
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    WebElement titleArticle = wait
-        .until(ExpectedConditions.presenceOfElementLocated(By.id("firstHeading")));
-//    WebElement titleArticle = driver.findElement(By.id("firstHeading"));
+    WebElement titleArticle = driver.findElement(By.id("firstHeading"));
     String title = titleArticle.getText();
-    //quit driver
-    Thread.sleep(5000);
+    Assert.assertEquals("Apple", title);
     driver.quit();
+
+
   }
+
+  @Test
+  public void searchOnWikitionary() {
+    WebDriver driver = new ChromeDriver();
+    driver.get("https://www.wikipedia.org/");
+  }
+
 }
