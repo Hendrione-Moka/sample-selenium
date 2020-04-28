@@ -2,6 +2,7 @@ package demo.steps_definition;
 
 import demo.pages.ArticlePage;
 import demo.pages.HomePage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,4 +36,5 @@ public class WikipediaStepDefinitions {
     Assert.assertEquals(title, actual);
 
   }
+
 }
