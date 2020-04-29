@@ -11,6 +11,11 @@ repositories {
     mavenCentral()
 }
 
+test {
+    //for running cucumber through command line: ex: ./gradlew clean test -Dcucumber.options="--tags @iOS"
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
