@@ -42,4 +42,6 @@ public class IOSStepDefinitions {
     String actual = registerPage.getMessage();
     Assert.assertEquals(message, actual);
   }
+
+
 }
