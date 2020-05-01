@@ -1,6 +1,5 @@
-package demo.pages;
+package demo.pages.todoapp;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import demo.webdriver.AndroidDriverInstance;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;

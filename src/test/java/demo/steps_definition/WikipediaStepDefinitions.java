@@ -1,40 +1,24 @@
 package demo.steps_definition;
 
-import demo.pages.ArticlePage;
-import demo.pages.HomePage;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
+import demo.pages.api.pokeapi.PokemonController;
+import demo.pages.wikipedia.ArticlePage;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.restassured.response.Response;
 import org.junit.Assert;
+
 
 public class WikipediaStepDefinitions {
 
-  private ArticlePage articlePage = new ArticlePage();
-  private HomePage homePage = new HomePage();
+  ArticlePage articlePage = new ArticlePage();
+  PokemonController pokemonController = new PokemonController();
 
-
-  @Given("User open wikipedia homepage")
-  public void userOpenWikipediaHomepage() {
-    homePage.openHomePage();
-
-  }
-
-  @When("User input keyword {string} on wikipedia homepage")
-  public void userInputKeywordOnWikipediaHomepage(String keyword) {
-    homePage.inputSearch(keyword);
-  }
-
-  @When("User click button search on wikipedia homepage")
-  public void userClickButtonSearchOnWikipediaHomepage() {
-    homePage.clickSearch();
-  }
-
-  @Then("User see title {string} on wikipedia article page")
-  public void userSeeTitlOnWikipediaArticlePage(String title) {
-    String actual = articlePage.getTitle();
-    Assert.assertEquals(title, actual);
-
+  @Then("User see pokemon data for {string} \\(pokemon number and id) are same with the poke API data")
+  public void userSeePokemonDataForPokemonNumberAndIdAreSameWithThePokeAPIData(String pokemonName) {
+    Response response = pokemonController.getPokemonData(pokemonName);
+    int actualPokemonNumberApi = response.path("id");
+    String actualPokemonNameApi = response.path("name");
+    Assert.assertTrue(actualPokemonNameApi.equalsIgnoreCase(articlePage.getPokemonName()));
+    Assert.assertEquals(Integer.parseInt(articlePage.getPokemonNumber()), actualPokemonNumberApi);
   }
 
 }

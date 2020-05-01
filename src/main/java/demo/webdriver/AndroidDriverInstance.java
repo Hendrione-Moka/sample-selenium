@@ -30,23 +30,6 @@ public class AndroidDriverInstance {
     }
   }
 
-//  public static void initialize() {
-//    String appiumUrl = "http://127.0.0.1:4723/wd/hub/";
-//    DesiredCapabilities caps = new DesiredCapabilities();
-//    caps.setCapability("device", "Google Pixel 3");
-//    caps.setCapability("os_version", "9.0");
-//    caps.setCapability("project", "My First Project");
-//    caps.setCapability("build", "My First Build");
-//    caps.setCapability("name", "Bstack-[Java] Sample Test");
-//    caps.setCapability("app", "bs://70e04948b677de5e7b09f698ddd5ccf3e71fac91");
-//    try {
-//      androidDriver = new AndroidDriver<>(new URL("https://"+userName+":"+accessKey+"@hub-cloud.browserstack.com/wd/hub"), caps);
-//      androidDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//    } catch (MalformedURLException e) {
-//      e.printStackTrace();
-//    }
-//  }
-
   public static void quit() {
     androidDriver.quit();
   }

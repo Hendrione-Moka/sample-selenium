@@ -1,9 +1,8 @@
-package demo.pages;
+package demo.pages.todoapp;
 
 import demo.webdriver.AndroidDriverInstance;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidElement;
-import org.openqa.selenium.By;
 
 public class AddToDoPage {
 
