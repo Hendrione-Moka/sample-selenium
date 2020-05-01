@@ -1,5 +1,6 @@
 package demo.pages;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import demo.webdriver.AndroidDriverInstance;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
@@ -9,6 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ToDoHomePage {
 
   public void clickButtonAdd() {
+    String isChecked = AndroidDriverInstance.androidDriver.findElement(By.id("qwewqe"))
+        .getAttribute("checked");
+    boolean data = Boolean.valueOf(isChecked);
+
     AndroidElement buttonAdd = AndroidDriverInstance.androidDriver
         .findElement(By.id("fab_add_task"));
     buttonAdd.click();
