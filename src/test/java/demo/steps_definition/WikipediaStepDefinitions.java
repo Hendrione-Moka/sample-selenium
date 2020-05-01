@@ -12,8 +12,9 @@ public class WikipediaStepDefinitions {
   ArticlePage articlePage = new ArticlePage();
   PokemonController pokemonController = new PokemonController();
 
-  @Then("User see pokemon data for {string} \\(pokemon number and id) are same with the poke API data")
-  public void userSeePokemonDataForPokemonNumberAndIdAreSameWithThePokeAPIData(String pokemonName) {
+  @Then("User see pokemon data for {string} \\(pokemon number and name) are same with the poke API data")
+  public void userSeePokemonDataForPokemonNumberAndNameAreSameWithThePokeAPIData(
+      String pokemonName) {
     Response response = pokemonController.getPokemonData(pokemonName);
     int actualPokemonNumberApi = response.path("id");
     String actualPokemonNameApi = response.path("name");

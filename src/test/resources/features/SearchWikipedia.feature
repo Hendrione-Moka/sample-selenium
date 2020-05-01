@@ -6,7 +6,7 @@ Feature: Search Wikipedia
     Given User open google.com
     And User search "Pikachu Wikipedia Indonesia"
     And User select first search result
-    Then User see pokemon data for "Pikachu" (pokemon number and id) are same with the poke API data
+    Then User see pokemon data for "Pikachu" (pokemon number and name) are same with the poke API data
 
 
   @Charizard
@@ -14,7 +14,7 @@ Feature: Search Wikipedia
     Given User open google.com
     And User search "Charizard Wikipedia Indonesia"
     And User select first search result
-    Then User see pokemon data for "Charizard" (pokemon number and id) are same with the poke API data
+    Then User see pokemon data for "Charizard" (pokemon number and name) are same with the poke API data
 
 
   @Bulbasaur
@@ -22,7 +22,7 @@ Feature: Search Wikipedia
     Given User open google.com
     And User search "Bulbasaur Wikipedia Indonesia"
     And User select first search result
-    Then User see pokemon data for "Bulbasaur" (pokemon number and id) are same with the poke API data
+    Then User see pokemon data for "Bulbasaur" (pokemon number and name) are same with the poke API data
 
 
   @Mewtwo
@@ -30,7 +30,7 @@ Feature: Search Wikipedia
     Given User open google.com
     And User search "Mewtwo Wikipedia Indonesia"
     And User select first search result
-    Then User see pokemon data for "Mewtwo" (pokemon number and id) are same with the poke API data
+    Then User see pokemon data for "Mewtwo" (pokemon number and name) are same with the poke API data
 
 
 
