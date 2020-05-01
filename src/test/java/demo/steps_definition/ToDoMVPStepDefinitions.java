@@ -104,4 +104,10 @@ public class ToDoMVPStepDefinitions {
     String actual = statisticsPage.getStatisticData();
     Assert.assertEquals(expected, actual);
   }
+
+  @Then("User see list label {string}")
+  public void userSeeListLabel(String labelText) {
+    String actual = toDoHomePage.getListTaskName();
+    Assert.assertEquals(labelText, actual);
+  }
 }

@@ -16,11 +16,20 @@ Feature: Complete To Do
   Scenario: filter to do active
     When User click filter button
     And User select filter "Active"
-    Then User see task "Sleep" on to do list page
+    Then User see list label "Active TO-DOs"
+    And User see task "Sleep" on to do list page
     And User didn't see task "Play Dota" on to do list page
 
   Scenario: filter to do completed
     When User click filter button
     And User select filter "Completed"
-    Then User see task "Play Dota" on to do list page
+    Then User see list label "Completed TO-DOs"
+    And User see task "Play Dota" on to do list page
     And User didn't see task "Sleep" on to do list page
+
+  Scenario: filter to do All
+    When User click filter button
+    And User select filter "All"
+    Then User see list label "All TO-DOs"
+    And User see task "Sleep" on to do list page
+    And User see task "Play Dota" on to do list page

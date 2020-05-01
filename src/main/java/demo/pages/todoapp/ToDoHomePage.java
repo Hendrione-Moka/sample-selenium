@@ -59,6 +59,35 @@ public class ToDoHomePage {
     waitForAnimation();
   }
 
+  public void clickMoreOptionsButton() {
+    AndroidDriverInstance.androidDriver
+        .findElement(By.xpath("//android.widget.ImageView[@content-desc='More options']")).click();
+    waitForAnimation();
+  }
+
+  public void selectFilter(String filterName) {
+    selectDropdownMenu("title", filterName);
+  }
+
+  public void selectMoreOptionsMenu(String menuName) {
+    selectDropdownMenu("title", menuName);
+  }
+
+  public void selectMenu(String menu) {
+    selectDropdownMenu("design_menu_item_text", menu);
+  }
+
+  public void selectDropdownMenu(String locator, String name) {
+    List<AndroidElement> filters = AndroidDriverInstance.androidDriver.findElements(By.id(locator));
+    for (AndroidElement filter : filters) {
+      if (filter.getText().equalsIgnoreCase(name)) {
+        filter.click();
+        break;
+      }
+    }
+    waitForAnimation();
+  }
+
   public void waitForAnimation() {
     try {
       Thread.sleep(2000);
@@ -67,50 +96,14 @@ public class ToDoHomePage {
     }
   }
 
-  public void clickMoreOptionsButton() {
-    AndroidDriverInstance.androidDriver
-        .findElement(By.xpath("//android.widget.ImageView[@content-desc='More options']")).click();
-    waitForAnimation();
-  }
-
-
-  public void selectFilter(String filterName) {
-    List<AndroidElement> filters = AndroidDriverInstance.androidDriver.findElements(By.id("title"));
-    for (AndroidElement filter : filters) {
-      if (filter.getText().equalsIgnoreCase(filterName)) {
-        filter.click();
-        break;
-      }
-    }
-    waitForAnimation();
-  }
-
-  public void selectMoreOptionsMenu(String menu) {
-    List<AndroidElement> filters = AndroidDriverInstance.androidDriver.findElements(By.id("title"));
-    for (AndroidElement filter : filters) {
-      if (filter.getText().equalsIgnoreCase(menu)) {
-        filter.click();
-        break;
-      }
-    }
-    waitForAnimation();
-  }
-
-  public void selectMenu(String menu) {
-    List<AndroidElement> filters = AndroidDriverInstance.androidDriver
-        .findElements(By.id("design_menu_item_text"));
-    for (AndroidElement filter : filters) {
-      if (filter.getText().equalsIgnoreCase(menu)) {
-        filter.click();
-        break;
-      }
-    }
-  }
-
   public boolean isOnPage() {
     WebDriverWait wait = new WebDriverWait(AndroidDriverInstance.androidDriver, 15);
     return wait.until(ExpectedConditions.presenceOfElementLocated(By.id("fab_add_task")))
         .isDisplayed();
+  }
+
+  public String getListTaskName() {
+    return AndroidDriverInstance.androidDriver.findElement(By.id("filteringLabel")).getText();
   }
 
 }
