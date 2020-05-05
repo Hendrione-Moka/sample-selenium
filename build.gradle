@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.21"
 }
 
 group 'org.example'
@@ -10,6 +11,13 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
+
+cucumberReports {
+    outputDir = file('build/customreport')
+    buildId = '0'
+    reports = files('build/cucumber.json')
+}
+
 
 test {
     //for running cucumber through command line: ex: ./gradlew clean test -Dcucumber.options="--tags @iOS"
@@ -33,5 +41,7 @@ dependencies {
     // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     compile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
 
+    // https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting
+    compile group: 'net.masterthought', name: 'cucumber-reporting', version: '5.2.2'
 
 }

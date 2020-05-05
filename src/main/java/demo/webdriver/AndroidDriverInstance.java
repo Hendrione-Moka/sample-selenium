@@ -2,6 +2,7 @@ package demo.webdriver;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,8 @@ public class AndroidDriverInstance {
     caps.setCapability("platformVersion", "8.1.0");
     caps.setCapability("deviceName", "device");
     caps.setCapability("udid", "emulator-5554");
-    caps.setCapability("app", "/Users/hendrione/Code/SampleSelenium/APP/TodoApp.apk");
+    caps.setCapability("app",
+        System.getProperty("user.dir") + File.separator + "APP" + File.separator + "TodoApp.apk");
     caps.setCapability("automationName", "UiAutomator2");
     try {
       androidDriver = new AndroidDriver<>(new URL(appiumUrl), caps);

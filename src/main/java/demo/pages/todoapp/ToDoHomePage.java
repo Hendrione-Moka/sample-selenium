@@ -66,7 +66,7 @@ public class ToDoHomePage {
   }
 
   public void selectFilter(String filterName) {
-    selectDropdownMenu("title", filterName);
+    selectDropdownMenu("title", "Active");
   }
 
   public void selectMoreOptionsMenu(String menuName) {
